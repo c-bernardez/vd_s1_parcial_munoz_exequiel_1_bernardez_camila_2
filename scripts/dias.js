@@ -3,7 +3,7 @@ d3.json('https://cdn.jsdelivr.net/npm/d3-time-format@3/locale/es-ES.json').then(
   d3.timeFormatDefaultLocale(locale)
 })
 
-d3.dsv(';','../data/147_18-24_agosto.csv', d3.autoType).then(data => {
+d3.dsv(';','https://c-bernardez.github.io/vd_s1_parcial_munoz_exequiel_1_bernardez_camila_2//data/147_18-24_agosto.csv', d3.autoType).then(data => {
 
     const cierre = d3.group(data, d=>d.fecha_cierre_contacto) //guardo todas las fechas de cierre
     
@@ -138,7 +138,15 @@ d3.dsv(';','../data/147_18-24_agosto.csv', d3.autoType).then(data => {
               },
               { x: d=>d.fecha, 
               y: 'canal' , 
-              fill: 'canal',
+              fill: d => {
+                if (d.canal === 'Operador UGIS') {
+                  return '#369EBD';
+                } else if (d.canal === 'App Denuncia Vial') {
+                  return '#7BD4BA';
+                } else {
+                  return '#B7B7B7';
+                }
+              },
               title: d => `${Math.round((promediosPonderadosFechasCierre.get(d.canal).getTime()-promediosPonderadosFechasInicio.get(d.canal).getTime())*(1.1574*10**(-8))) } días`,
               }
             )),
@@ -187,7 +195,13 @@ d3.dsv(';','../data/147_18-24_agosto.csv', d3.autoType).then(data => {
             x: d => new Date(d.fecha.getTime() - (5 * 60 * 60 * 1000)), 
             y: d => d.canal, 
             text: d => d3.timeFormat('%d %b')(d.fecha).toUpperCase(), 
-            fill: d=>d.canal, 
+            fill: d => {
+              if (d.canal === 'Operador UGIS') {
+                return '#55A7BF';
+              } else if (d.canal === 'App Denuncia Vial') {
+                return '#95CCBC';
+              } 
+            },
             textAnchor: 'end', 
             fontWeight: '500',
             fontSize: 17,
@@ -198,7 +212,13 @@ d3.dsv(';','../data/147_18-24_agosto.csv', d3.autoType).then(data => {
             x: d => new Date(d.fecha.getTime() +(5 * 60 * 60 * 1000)), 
             y: d => d.canal, 
             text: d => d3.timeFormat('%d %b')(d.fecha).toUpperCase(), 
-            fill: d=>d.canal, 
+            fill: d => {
+              if (d.canal === 'Operador UGIS') {
+                return '#55A7BF';
+              } else if (d.canal === 'App Denuncia Vial') {
+                return '#95CCBC';
+              } 
+            },
             textAnchor: 'start', 
             fontWeight: '500',
             fontSize: 17,

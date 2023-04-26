@@ -1,7 +1,7 @@
 //MAPA
 
 const mapaFetch = d3.json('./scripts/barrios-caba.geojson')
-const dataFetch = d3.dsv(';', '../data/147_18-24_agosto.csv', d3.autoType)
+const dataFetch = d3.dsv(';', 'https://c-bernardez.github.io/vd_s1_parcial_munoz_exequiel_1_bernardez_camila_2//data/147_18-24_agosto.csv', d3.autoType)
 
 Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
   
@@ -39,6 +39,8 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
       type: 'mercator',
       domain: barrios, // Objeto GeoJson a encuadrar
     },
+    height:300,
+    width:300,
     color: {
       // Quantize continuo (cant. denuncias) -> discreto (cant. colores)
       type: 'categorical', 
@@ -64,7 +66,7 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
         },
         
         stroke: 'white',
-        strokeWidth:1.5,
+        strokeWidth:1,
         title: d => `${d.properties.BARRIO}\n${mayorCantidadPorBarrio.get(d.properties.BARRIO).values().next().value} reclamos con ${mayorCantidadPorBarrio.get(d.properties.BARRIO).keys().next().value}`,
       }),
     ],
