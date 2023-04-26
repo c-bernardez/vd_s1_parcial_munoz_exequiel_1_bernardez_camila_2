@@ -1,30 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="https://c-bernardez.github.io/vd_s1_parcial_munoz_exequiel_1_bernardez_camila_2/cabaSQ.png" type="/x-icon">
     <!-- <script src="./scripts/barrios-caba.geojson"></script> -->
-    <title>SUACI</title>
-    <style>
-      #chart {
-        overflow-y: auto;
-      }
-      #chart svg {
-        max-width: initial;
-      }
-    </style>
-  </head>
-  <body>
+    <title>Impacto del SUACI en la Ciudad de Buenos Aires</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://c-bernardez.github.io/vd_s1_parcial_munoz_exequiel_1_bernardez_camila_2/styles/style.css">
+</head>
 
-    <div id="chartMap"></div>
-    <div id="heatMap"></div>
-    <div id="timeline"></div>
-    
-    
+<body>
+  <div class="header-logo">
+    <nav class="navbar bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="https://buenosaires.gob.ar/sites/default/files/logo.png" alt="Logo" width="50" height="30" class="d-inline-block center-text-top">
+          Buenos Aires Ciudad
+        </a>
+      </div>
+    </nav>
+  </div>
+  <div class="container position-relative">
+    <div id="carouselExampleCaptions" class="carousel slide">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="chica.png" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block"></div>
+        </div>
+        <div class="carousel-item">
+          <img src="chico.png" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block"></div>
+        </div>
+
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
   
+    <div class="carousel-caption center-0 mb-5 d-none d-md-block text-center">
+      <h1 class="mt-0 fs-20 text-center">
+        Explorando el impacto del <br>
+        SUACI en la Ciudad de <br>
+        Buenos Aires
+      </h1>
+    </div>
+  </div>
+  
+  <div class="subtitulo">
+    Se examina en detalle el uso de los diferentes canales de denuncia disponibles en la Ciudad de Buenos Aires, con el objetivo de evaluar cuál es el canal más utilizado por los ciudadanos. Se analizan datos sobre la cantidad de denuncias realizadas a través de cada canal, así como la tasa de resolución de los casos reportados a través de cada medio.
+  </div>
+
+  <div class="titlegraph">
+      El canal favorito de cada barrio de la Ciudad de Buenos Aires
+    <h3> <span class="appba">
+      App BA</span>, <span class="gcsweb">GCS WEB</span>, <span class="ugis">Operador UGIS </span> y <span class="vial">App Denuncia Vial</span>
+       son los canales más elegidos por los porteños.</h3>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="lorem">
+        Ut erat libero, sodales eget condimentum at, ultricies ac massa. Suspendisse egestas et massa ac rhoncus. <br>
+        <br>
+        Mauris ex urna, convallis nec velit vitae, malesuada semper diam. Interdum et malesuada fames ac ante ipsum primis in faucibus. In viverra accumsan condimentum.
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="cuadrado" id="chartMap"></div>
+    </div>
+  </div>
+  
+
+  <div class="titlegraph1">
+      ¿Cuánto se utilizó cada canal en los barrios con más reclamos?
+  </div>
+  <div class="row">
+    <div class="col-md-11">
+      <div class="cuadrado2" id="heatMap"></div>
+    </div>
+    <div class="col-md-1 mt-3">
+      <img class="legend"src="legend.jpg" alt=""
+      width="100" 
+      height="350">
+    </div>
+  </div>
+  
+
+  <div class="lorem1">
+    Ut erat libero, sodales eget condimentum at, ultricies ac massa. Suspendisse egestas et massa ac rhoncus. Mauris ex urna, convallis nec velit vitae, malesuada semper diam. Interdum et malesuada
+     fames ac ante ipsum primis in faucibus. In viverra accumsan condimentum.
+  </div>
+
+  <div class="titlegraph1">
+      Variaciones en la tasa de resolución según el canal
+  </div>
+
+  <div class="row">
+    <div class="col-md-7">
+      <div class="cuadrado1" id="timeline"></div>
+    </div>
+    <div class="col-md-5">
+      <div class="lorem2">
+        Ut erat libero, sodales eget condimentum at, ultricies ac massa. Suspendisse egestas et massa ac rhoncus. <br><br>
+        Mauris ex urna, convallis nec velit vitae, malesuada semper diam. Interdum et malesuada fames ac ante ipsum primis in faucibus. In viverra accumsan condimentum.
+      </div>
+    </div>
+  </div>
+
+  <section class="footer">
+    <footer class="bg-secondary text-white text-center text-md-start">
+      <div class="container p-4">
+        <div class="row">
+          <img class ="ba" src="https://buenosaires.gob.ar/assets/img/logos/vamos-ba-logo.svg" alt=""
+          height="30"
+          width="50">
+          <div class="col-lg-5 text-center">
+
+            <h5 class="text">Secretaría de Atención y Gestión Ciudadana</h5>
+
+          </div>
+        </div>
+      </div>
+      <div class="text-center p-3" style="background-color: #D9C05C;">
+        © 2023 Copyright:
+        <a class="text-white" href="https://mdbootstrap.com/">exeycami.com</a>
+      </div>
+    </footer>
+  </section>
 
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"></script>
@@ -34,5 +147,6 @@
     <script src="https://c-bernardez.github.io/vd_s1_parcial_munoz_exequiel_1_bernardez_camila_2/scripts/heat_map.js"></script>
     <script src="https://c-bernardez.github.io/vd_s1_parcial_munoz_exequiel_1_bernardez_camila_2/scripts/dias.js"></script>
     <!-- <script src="./scripts/barrios-caba.geojson"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script> 
   </body>
 </html>

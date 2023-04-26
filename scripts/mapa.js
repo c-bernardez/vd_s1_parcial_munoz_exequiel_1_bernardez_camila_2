@@ -39,8 +39,6 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
       type: 'mercator',
       domain: barrios, // Objeto GeoJson a encuadrar
     },
-    height:300,
-    width:300,
     color: {
       // Quantize continuo (cant. denuncias) -> discreto (cant. colores)
       type: 'categorical', 
@@ -66,7 +64,7 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
         },
         
         stroke: 'white',
-        strokeWidth:1,
+        strokeWidth:1.5,
         title: d => `${d.properties.BARRIO}\n${mayorCantidadPorBarrio.get(d.properties.BARRIO).values().next().value} reclamos con ${mayorCantidadPorBarrio.get(d.properties.BARRIO).keys().next().value}`,
       }),
     ],
